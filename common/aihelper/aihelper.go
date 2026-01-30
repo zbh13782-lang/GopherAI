@@ -22,6 +22,10 @@ func NewAIHelper(model_ AIModel, SessionID string) *AIHelper {
 		messages: make([]*model.Message, 0),
 
 		saveFunc: func(msg *model.Message) (*model.Message, error) {
+			if rabbitmq.RMQMessage == nil {
+				// RabbitMQ未初始化，跳过发布
+				return msg, nil
+			}
 			data := rabbitmq.GenerateMessageMQParam(msg.SessionID, msg.Content, msg.UserName, msg.IsUser)
 			err := rabbitmq.RMQMessage.Publish(data)
 			return msg, err

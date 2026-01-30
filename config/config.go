@@ -48,6 +48,12 @@ type Rabbitmq struct {
 	RabbitmqVhost    string `toml:"vhost"`
 }
 
+type OpenAI struct {
+	ApiKey    string `toml:"openai_api_key"`
+	ModelName string `toml:"openai_model_name"`
+	BaseURL   string `toml:"openai_base_url"`
+}
+
 type Config struct {
 	EmailConfig `toml:"emailConfig"`
 	RedisConfig `toml:"redisConfig"`
@@ -55,6 +61,7 @@ type Config struct {
 	JwtConfig   `toml:"jwtConfig"`
 	MainConfig  `toml:"mainConfig"`
 	Rabbitmq    `toml:"rabbitmqConfig"`
+	OpenAI      `toml:"openAIConfig"`
 }
 
 type RedisKeyConfig struct {

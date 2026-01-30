@@ -1,6 +1,10 @@
 package router
 
-import "github.com/gin-gonic/gin"
+import (
+	"GopherAI/middleware/jwt"
+
+	"github.com/gin-gonic/gin"
+)
 
 func InitRouter() *gin.Engine {
 	r := gin.Default()
@@ -9,9 +13,11 @@ func InitRouter() *gin.Engine {
 		RegisterUserRouter(enterRouter.Group("/user"))
 	}
 
+	{
+		AIGroup := enterRouter.Group("/AI")
+		AIGroup.Use(jwt.Auth())
+		AIRouter(AIGroup)
+	}
 
-
-
-	
 	return r
 }

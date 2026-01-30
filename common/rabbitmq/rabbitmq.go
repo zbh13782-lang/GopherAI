@@ -64,6 +64,9 @@ func NewWorkRabbitMQ(queue string) *RabbitMQ {
 }
 
 func (r *RabbitMQ) Publish(message []byte) error {
+	if r == nil || r.channel == nil {
+		return fmt.Errorf("RabbitMQ channel is not initialized")
+	}
 	_, err := r.channel.QueueDeclare(r.Key, false, false, false, false, nil)
 	if err != nil {
 		return err
