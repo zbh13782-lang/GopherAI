@@ -27,7 +27,7 @@ func main() {
 	}
 
 	redis.Init()
-	// 在 redis.Init() 之后添加
+
 	rabbitmq.InitRabbitMQ()
 
 	r := router.InitRouter()
