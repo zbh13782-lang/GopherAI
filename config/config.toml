@@ -4,7 +4,7 @@ host = "0.0.0.0"
 port = 9030
 
 [emailConfig]
-authcode = "omhvljsrtuflcjde"
+authcode = ""
 email = "3332366752@qq.com"
 
 [redisConfig]
@@ -35,6 +35,6 @@ password= "guest"
 vhost= "/"
 
 [openAIConfig]
-openai_api_key="sk-16ee5cf23b764e1188d853eb7d44e438"
+openai_api_key=""
 openai_model_name="qwen-plus"
 openai_base_url="https://dashscope.aliyuncs.com/compatible-mode/v1"
